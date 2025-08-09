@@ -1,53 +1,231 @@
-bash
-
-/index.html
-/style.css
-/images
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChaAura Studio</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #222; background-color: #fff; }
-    header { text-align: center; padding: 4rem 1rem; }
-    header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    header p { font-size: 1.2rem; color: #666; }
-    section { padding: 2rem 1rem; max-width: 900px; margin: auto; }
-    h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-    a.button { display: inline-block; padding: 0.75rem 1.5rem; margin: 0.5rem; background: #000; color: #fff; text-decoration: none; border-radius: 4px; }
-    footer { text-align: center; padding: 2rem; font-size: 0.9rem; color: #888; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>차오라 스튜디오 · ChaAura Studio</title>
+  <meta name="description" content="크리스탈 싱잉볼 사운드, 마음챙김, 먹기 명상. 고요가 머무는 곳, 차오라.">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>ChaAura Studio</h1>
-    <p>Mindfulness · Meditation · Singing Bowl</p>
+  <!-- Header -->
+  <header class="header">
+    <div class="container inner">
+      <a href="/" class="logo" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+        <span style="display:inline-block;width:24px;height:24px;border-radius:50%;background:#111"></span>
+        <strong>Chaora Studio</strong>
+      </a>
+      <nav class="nav">
+        <a href="#about">소개</a>
+        <a href="#classes">클래스&예약</a>
+        <a href="#profile">프로필</a>
+        <a href="#contact">오시는 길</a>
+      </nav>
+      <a class="btn" href="#classes">지금 예약</a>
+    </div>
   </header>
 
-  <section>
-    <h2>Welcome</h2>
-    <p>ChaAura Studio is a space for wellness, meditation, and crystal singing bowl sessions. Experience deep relaxation and inner peace.</p>
-    <a href="https://linkbio.co/chaAura" class="button">Book a Class</a>
+  <!-- Hero (no external links here) -->
+  <section class="hero">
+    <div class="container grid two">
+      <div>
+        <h1>고요가 머무는 곳, <u style="text-decoration-thickness:2px;text-underline-offset:8px">차오라</u></h1>
+        <p class="lead">크리스탈 싱잉볼·마음챙김·먹기 명상. 숨을 고르고, 내면의 질서를 다시 세우는 시간.</p>
+      </div>
+      <div class="heroimg">
+        <img src="images/hero.jpg" alt="차오라 스튜디오">
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Our Programs</h2>
-    <ul>
-      <li><a href="https://booking.naver.com/booking/12/bizes/1421328/items/6807953" target="_blank">Thursday Crystal Singing Bowl Sound Bath</a></li>
-      <li><a href="https://booking.naver.com/booking/12/bizes/1421328/items/6834301" target="_blank">Saturday Brunch Meditation</a></li>
-      <li><a href="https://booking.naver.com/booking/12/bizes/1421328/items/6782032" target="_blank">Flower Mandala Meditation</a></li>
-    </ul>
+  <!-- About with slider -->
+  <section id="about" class="section">
+    <div class="container grid two">
+      <div>
+        <h2>차오라 스튜디오</h2>
+        <p>서울 서초구 양재동, 조용한 4층 공간에서 울림과 호흡을 따라 나를 돌보는 시간을 엽니다. 소수 정원으로 운영되며 ‘에너지 리셋 명상’, 먹기 명상 원데이, 1:1 싱잉볼 세션 등을 진행합니다.</p>
+        <small class="hint">운영: 화–토 / 시간 유동 (예약제)</small>
+      </div>
+      <div class="carousel" data-name="about">
+        <div class="carousel-track">
+          <img src="images/about-1.jpg" alt="차오라 공간 1" onerror="this.style.display='none'">
+          <img src="images/about-2.jpg" alt="차오라 공간 2" onerror="this.style.display='none'">
+          <img src="images/about-3.jpg" alt="차오라 공간 3" onerror="this.style.display='none'">
+        </div>
+        <div class="nav"><button data-prev>‹</button><button data-next>›</button></div>
+        <div class="dots"></div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Contact</h2>
-    <p>For 1:1 sessions, please <a href="https://docs.google.com/forms/d/e/1FAIpQLScVH9DSocP1m4RGu1oo15_qPspuFQfipxy7go4z36T7b0AIcA/viewform" target="_blank">fill out the form here</a>.</p>
+  <!-- Classes & Booking -->
+  <section id="classes" class="section">
+    <div class="container">
+      <h2>클래스 & 예약</h2>
+      <div class="list" style="margin-top:18px">
+        <article class="card">
+          <div class="carousel" data-name="class-flower">
+            <div class="carousel-track">
+              <img src="images/class-flower-1.jpg" alt="플라워 만다라 1" onerror="this.style.display='none'">
+              <img src="images/class-flower-2.jpg" alt="플라워 만다라 2" onerror="this.style.display='none'">
+              <img src="images/class-flower-3.jpg" alt="플라워 만다라 3" onerror="this.style.display='none'">
+            </div>
+            <div class="nav"><button data-prev>‹</button><button data-next>›</button></div>
+            <div class="dots"></div>
+          </div>
+          <div class="body">
+            <strong>플라워 만다라 명상</strong>
+            <p class="hint">감각을 여는 창의적 명상과 해체의식.</p>
+            <p><a class="btn" href="https://booking.naver.com/booking/12/bizes/1421328/items/6782032?isProgramBizItem=false&startDateTime=2025-08-09T00%3A00%3A00%2B09%3A00" target="_blank" rel="noopener">네이버 예약</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="carousel" data-name="class-soundbath">
+            <div class="carousel-track">
+              <img src="images/class-soundbath-1.jpg" alt="사운드배스 1" onerror="this.style.display='none'">
+              <img src="images/class-soundbath-2.jpg" alt="사운드배스 2" onerror="this.style.display='none'">
+              <img src="images/class-soundbath-3.jpg" alt="사운드배스 3" onerror="this.style.display='none'">
+            </div>
+            <div class="nav"><button data-prev>‹</button><button data-next>›</button></div>
+            <div class="dots"></div>
+          </div>
+          <div class="body">
+            <strong>목요일 저녁 · 크리스탈 싱잉볼 사운드배스</strong>
+            <p class="hint">일주일의 피로를 이완시키는 사운드 레스트.</p>
+            <p><a class="btn" href="https://booking.naver.com/booking/12/bizes/1421328/items/6807953?isProgramBizItem=false&startDateTime=2025-07-17T00%253A00%253A00%252B09%253A00" target="_blank" rel="noopener">네이버 예약</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="carousel" data-name="class-brunch">
+            <div class="carousel-track">
+              <img src="images/class-brunch-1.jpg" alt="브런치 명상 1" onerror="this.style.display='none'">
+              <img src="images/class-brunch-2.jpg" alt="브런치 명상 2" onerror="this.style.display='none'">
+              <img src="images/class-brunch-3.jpg" alt="브런치 명상 3" onerror="this.style.display='none'">
+            </div>
+            <div class="nav"><button data-prev>‹</button><button data-next>›</button></div>
+            <div class="dots"></div>
+          </div>
+          <div class="body">
+            <strong>토요 브런치 명상</strong>
+            <p class="hint">건포도/초콜릿 명상 + 비건 브런치 나눔.</p>
+            <p><a class="btn" href="https://booking.naver.com/booking/12/bizes/1421328/items/6834301?isProgramBizItem=false&startDateTime=2025-08-09T00%3A00%3A00%2B09%3A00" target="_blank" rel="noopener">네이버 예약</a></p>
+          </div>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    © 2025 ChaAura Studio. All rights reserved.
+  <!-- Profile with events gallery -->
+  <section id="profile" class="section">
+    <div class="container">
+      <h2>프로필</h2>
+      <div class="profile">
+        <img src="images/profile.jpg" alt="프로필 사진" onerror="this.style.background='#eee'">
+        <div>
+          <strong>차오라 · ChaAura</strong>
+          <div class="badges">
+            <span class="badge">크리스탈/싱잉볼 힐러</span>
+            <span class="badge">한국회복탄력성전문가협회 이사</span>
+            <span class="badge">MSC‑T Trained / MSC Teacher in Training</span>
+            <span class="badge">13년차 인플루언서 @costrama</span>
+            <span class="badge">차오라 운영</span>
+            <span class="badge">필라테스 지도자</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns" style="margin-top:18px">
+        <div>
+          <strong>◆ 웰니스 브랜딩 캠페인 컨설팅</strong>
+          <ul class="clean">
+            <li>LCDC, 호텔 나루 서울 엠갤러리, Jun by Jun K, 더말로지카</li>
+          </ul>
+        </div>
+        <div>
+          <strong>◆ 클래스 진행</strong>
+          <ul class="clean">
+            <li>現 차오라 스튜디오, 베러미클럽 클래스 진행 중</li>
+            <li>前 맺다명상연구소, 마이요가목동 정규 클래스</li>
+            <li>프론투라인, 더채플, 온숲 등 브랜드 클래스</li>
+          </ul>
+        </div>
+        <div>
+          <strong>◆ 강의 및 강연</strong>
+          <ul class="clean">
+            <li>국회학술세미나 · 이화여자대학교 글로벌평생교육원(’24,’25)</li>
+            <li>숙명여자대학교 평생교육원(’23,’24) · 청라중학교 특강</li>
+            <li>화도진중학교 자기연민 · 김포호수중 학부모 마음챙김 연수</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <div class="body">
+          <strong>외부 출강 · 이벤트</strong>
+          <div class="carousel" data-name="profile-events" style="margin-top:10px">
+            <div class="carousel-track">
+              <img src="images/profile-1.jpg" alt="이벤트 1" onerror="this.style.display='none'">
+              <img src="images/profile-2.jpg" alt="이벤트 2" onerror="this.style.display='none'">
+              <img src="images/profile-3.jpg" alt="이벤트 3" onerror="this.style.display='none'">
+            </div>
+            <div class="nav"><button data-prev>‹</button><button data-next>›</button></div>
+            <div class="dots"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Map only -->
+  <section id="contact" class="section">
+    <div class="container grid two">
+      <div>
+        <h2>오시는 길</h2>
+        <p>서울 서초구 양재동 마방로6길 33, 4층 — 차오라 스튜디오</p>
+        <small class="hint">주차 가능 · 양재역 도보 8분</small>
+      </div>
+      <div class="map">
+        <iframe title="map" src="https://maps.google.com/maps?q=37.4663,127.034&t=k&z=15&output=embed" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest: YouTube & Instagram (auto via embeds) -->
+  <section class="section">
+    <div class="container">
+      <h2>최신 컨텐츠</h2>
+      <div class="latest" style="margin-top:12px">
+        <div class="feedbox">
+          <div class="head"><strong>YouTube (@Cha_Aura)</strong><span class="hint">자동 최신</span></div>
+          <!-- 채널 '업로드' 플레이리스트 ID를 넣으면 자동으로 최신 영상이 노출됩니다. (형식: UUxxxxxxxx) -->
+          <iframe title="YouTube Uploads" src="https://www.youtube.com/embed?listType=playlist&list=PLAYLIST_ID"></iframe>
+        </div>
+        <div class="feedbox">
+          <div class="head"><strong>Instagram (@chaaura__)</strong><span class="hint">자동 최신</span></div>
+          <!-- LightWidget/SnapWidget 등의 임베드 코드를 아래에 붙여넣으면 최신 피드가 자동 표시됩니다. -->
+          <div style="padding:14px" class="hint">여기에 Instagram 위젯 코드를 붙여넣어 주세요.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:#111"></span>
+        <span>© 2025 Chaora Studio</span>
+      </div>
+      <div class="hint">
+        Instagram <a href="https://www.instagram.com/chaaura__" target="_blank" rel="noopener">@chaaura__</a> ·
+        YouTube <a href="https://www.youtube.com/@Cha_Aura" target="_blank" rel="noopener">@Cha_Aura</a> ·
+        E-mail <a href="mailto:chaaura@naver.com">chaaura@naver.com</a>
+      </div>
+    </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
