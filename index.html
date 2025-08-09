@@ -30,29 +30,47 @@
     .btn--book{font-size:12px;padding:8px 12px;border-radius:999px;background:var(--soft);border-color:#d8d8d8}
     .btn--book:hover{background:#efefef}
 
-    /* HERO: 9:16 with caption */
-    .hero{padding:0;border-top:none}
-    .hero-figure{position:relative;aspect-ratio:16/9;max-height:90vh;margin:0;border-bottom:1px solid var(--line);overflow:hidden}
-    .hero-figure img{width:100%;height:100%;object-fit:cover;display:block}
-    .hero-figure figcaption{
-      position:absolute;left:0;right:0;bottom:0;
-      padding:18px 20px;font-size:28px;letter-spacing:.02em;color:#fff;
-      background:linear-gradient(180deg,rgba(0,0,0,0) 0%, rgba(0,0,0,.45) 80%);
-    }
+/* HERO: full-bleed 16:9 */
+.hero-figure{
+  position: relative;
+  width: 100vw;                     /* 뷰포트 너비만큼 */
+  margin-left: calc(50% - 50vw);    /* 부모 패딩/여백 무시하고 좌우 꽉 채우기 */
+  aspect-ratio: 16/9;               /* 16:9로 고정 */
+  max-height: 90vh;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.hero-figure img{width:100%;height:100%;object-fit:cover;display:block}
+
 
     /* Grids */
     .grid{display:grid;gap:32px}
     @media (min-width:900px){.grid.two{grid-template-columns:1.05fr .95fr}}
 
     /* Carousel */
-    .carousel{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fafafa}
-    .carousel-track{display:flex;transition:transform .4s ease}
-    .carousel img{width:100%;height:300px;object-fit:cover;display:block}
-    .carousel .nav{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;padding:0 4px;pointer-events:none}
-    .carousel .nav button{pointer-events:auto;border:none;background:rgba(0,0,0,.5);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer}
-    .carousel .dots{position:absolute;bottom:8px;left:0;right:0;display:flex;gap:6px;justify-content:center}
-    .carousel .dot{width:8px;height:8px;border-radius:50%;background:#d0d0d0}
-    .carousel .dot.active{background:#111}
+/* Carousel */
+.carousel{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  background:#000;                 /* 트랜지션 중 바닥색 보이지 않게 */
+}
+.carousel-track{
+  display:flex;
+  transition:transform .4s ease;
+  will-change: transform;
+}
+.carousel-track > img{
+  flex:0 0 100%;                   /* 슬라이드가 항상 1면(=100%) 차지 */
+  width:100%;
+  height:clamp(220px, 34vw, 360px);/* 반응형 높이 */
+  object-fit:cover;
+  display:block;
+}
+.carousel .nav{ /* 기존 그대로 사용 가능 */}
+.carousel .dots{/* 기존 그대로 사용 가능 */}
+
 
     /* Cards */
     .list{display:grid;gap:18px}
@@ -350,6 +368,7 @@
       prev&&prev.addEventListener('click',()=>{idx=(idx-1+slides.length)%slides.length;update()});
       next&&next.addEventListener('click',()=>{idx=(idx+1)%slides.length;update()});
       window.addEventListener('resize',update);
+      window.addEventListener('load', update);   // 이미지가 늦게 로드돼도 위치 보정
       paintDots(); update();
     }
     window.addEventListener('DOMContentLoaded',()=>{ document.querySelectorAll('.carousel').forEach(setupCarousel); });
