@@ -29,7 +29,7 @@
     .brand{display:flex;align-items:center;gap:10px;font-weight:600}
     .brand-dot{width:22px;height:22px;border-radius:50%;background:var(--earth)}
     .nav{display:none;gap:20px}
-    @media (min-width:860px){.nav{display:flex}}
+    @media (min-width:900px){.nav{display:flex}}
     .cta{border:1px solid #1d1d1d;background:#1d1d1d;color:#fff;border-radius:14px;padding:9px 14px;font-size:13px}
 
     /* Hero */
@@ -67,7 +67,7 @@
     .profile{display:grid;gap:34px;align-items:start}
     @media(min-width:980px){.profile{grid-template-columns:360px 1fr}}
     .portrait{border-radius:10px;border:1px solid var(--line);overflow:hidden;background:#f8f8f8}
-    .tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 6px}
     .tag{background:var(--soft);padding:6px 10px;border-radius:6px;font-size:12.5px;color:#3a3a3a}
     .cols{display:grid;gap:20px;margin-top:16px}
     @media(min-width:820px){.cols{grid-template-columns:repeat(3,1fr)}}
@@ -102,6 +102,19 @@
     .ig-block{padding:70px 0;background:#fafafa;border-top:1px solid var(--line)}
     .ig-block h2{text-align:center;margin-bottom:22px}
 
+    /* Contact form */
+    .form-card{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+    .form-embed{border:0;width:100%;height:760px;border-radius:10px;background:#fafafa}
+    .mailto{display:inline-flex;gap:8px;align-items:center;border:1px solid #ddd;border-radius:999px;padding:8px 12px;font-size:13px;background:var(--soft)}
+
+    /* Visit */
+    .visit-grid{display:grid;gap:16px}
+    @media(min-width:800px){.visit-grid{grid-template-columns:1fr 1fr}}
+    .visit-card{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff}
+    .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .btn{border:1px solid #dcdcdc;background:var(--soft);border-radius:999px;padding:8px 12px;font-size:13px}
+    .note{color:#6f6f6f;font-size:14px}
+
     /* Footer */
     .footer{padding:28px 0;border-top:1px solid var(--line)}
     .footline{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;color:#777;font-size:14px}
@@ -120,6 +133,8 @@
         <a href="#about">소개</a>
         <a href="#classes">클래스&예약</a>
         <a href="#profile">프로필</a>
+        <a href="#contact">1:1 문의</a>
+        <a href="#visit">오시는 길</a>
         <a href="#instagram">인스타그램</a>
       </nav>
       <a class="cta" href="#classes">지금 예약</a>
@@ -130,7 +145,7 @@
   <section class="hero">
     <figure class="hero-figure">
       <img src="images/hero.jpg" alt="Cha Aura Studio Hero">
-      <figcaption>Cha Aura</figcaption>
+      <figcaption>차오라</figcaption>
     </figure>
   </section>
 
@@ -176,7 +191,7 @@
           </div>
           <div class="body">
             <h3 class="title">플라워 만다라 명상</h3>
-            <p class="desc">만다라는 우리에게 어떤 의미를 건낼까요? 감각을 여는 창의적 명상과 해체의식</p>
+            <p class="desc">감각을 여는 창의적 명상과 해체의식.</p>
             <p><a class="btn-book" href="https://booking.naver.com/booking/12/bizes/1421328/items/6782032?isProgramBizItem=false&startDateTime=2025-08-09T00%3A00%3A00%2B09%3A00" target="_blank" rel="noopener">네이버 예약</a></p>
           </div>
         </article>
@@ -193,7 +208,7 @@
           </div>
           <div class="body">
             <h3 class="title">목요일 저녁 사운드배스</h3>
-            <p class="desc">일주일의 피로가 가득한 목요일 저녁, 부드럽게 정화, 이완시키는 사운드 배스를 통해 따스한 금요일을 맞이해보세요  </p>
+            <p class="desc">일주일의 피로를 이완시키는 사운드 레스트.</p>
             <p><a class="btn-book" href="https://booking.naver.com/booking/12/bizes/1421328/items/6807953?isProgramBizItem=false&startDateTime=2025-07-17T00%253A00%253A00%252B09%253A00" target="_blank" rel="noopener">네이버 예약</a></p>
           </div>
         </article>
@@ -210,7 +225,7 @@
           </div>
           <div class="body">
             <h3 class="title">토요 브런치 명상</h3>
-            <p class="desc">핫플레이스 보다 먹는 새로움을 경험해보는 브런치 명상</p>
+            <p class="desc">건포도/초콜릿 명상 + 비건 브런치 나눔.</p>
             <p><a class="btn-book" href="https://booking.naver.com/booking/12/bizes/1421328/items/6834301?isProgramBizItem=false&startDateTime=2025-08-09T00%3A00%3A00%2B09%3A00" target="_blank" rel="noopener">네이버 예약</a></p>
           </div>
         </article>
@@ -228,14 +243,15 @@
           <img src="images/profile-portrait.jpg" alt="Cha Aura portrait" onerror="this.style.display='none'">
         </div>
         <div>
-          <h3 style="font-size:22px;margin-bottom:2px">Cha Aura · 차오라</h3>
-          <p class="about-lead">크리스탈/싱잉볼 힐러 · MSC-T Trained / MSC Teacher in Training · 한국회복탄력성전문가협회 이사 · 13년차 인플루언서 @costrama · 필라테스 지도자</p>
+          <h3 style="font-size:22px;margin:0">Cha Aura · 차오라</h3>
+          <!-- 통일된 배지 디자인 -->
           <div class="tags">
+            <span class="tag">MSC-T Trained Teacher</span>
+            <span class="tag">MSC Teacher in Training</span>
             <span class="tag">크리스탈/싱잉볼 힐러</span>
             <span class="tag">한국회복탄력성전문가협회 이사</span>
-            <span class="tag">MSC-T Trained</span>
-            <span class="tag">필라테스 지도자</span>
             <span class="tag">13년차 인플루언서</span>
+            <span class="tag">필라테스 지도자</span>
           </div>
           <div class="cols">
             <div>
@@ -265,7 +281,7 @@
         </div>
       </div>
 
-      <!-- Events: Horizontal ribbon slider -->
+      <!-- 외부 출강/이벤트: 가로 리본 + 라이트박스 -->
       <div class="card" style="margin-top:20px">
         <div class="body">
           <strong>외부 출강 · 이벤트</strong>
@@ -289,6 +305,51 @@
               <button type="button" aria-label="next" data-ribbon-next>›</button>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1:1 수업 문의 -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="eyebrow">contact</div>
+      <h2>1:1 수업 문의</h2>
+      <div class="form-card" style="margin-top:12px">
+        <!-- Google Form embed (참고 양식) -->
+        <iframe
+          class="form-embed"
+          src="https://docs.google.com/forms/d/e/1FAIpQLScVH9DSocP1m4RGu1oo15_qPspuFQfipxy7go4z36T7b0AIcA/viewform?embedded=true"
+          title="1:1 수업 문의 Google Form"
+          loading="lazy"
+        ></iframe>
+        <p class="note">응답 알림을 <strong>chaaura@naver.com</strong>으로 받으려면 Google Form 설정 &gt; 알림에서 이메일 알림을 켜주세요.</p>
+        <div class="btns">
+          <a class="mailto" href="mailto:chaaura@naver.com?subject=%5B1%3A1%20%EC%88%98%EC%97%85%20%EB%AC%B8%EC%9D%98%5D%20%EC%9D%B4%EB%A6%84%2F%ED%95%B4%EB%8B%B9%EC%9D%BC&body=%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%9D%BC%EC%8B%9C%EA%B0%84%3A%0A%EA%B4%80%EC%8B%AC%20%ED%81%B4%EB%9E%98%EC%8A%A4%3A%0A%EC%97%B0%EB%9D%BD%20%EC%B2%98%3A">또는 이메일로 문의하기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 오시는 길 -->
+  <section id="visit" class="section">
+    <div class="container">
+      <div class="eyebrow">visit</div>
+      <h2>오시는 길</h2>
+      <div class="visit-grid" style="margin-top:12px">
+        <div class="visit-card">
+          <h3>주소</h3>
+          <p>서울 서초구 <strong>양재동</strong> · 4F</p>
+          <p class="note">정확한 상세 주소는 예약 확정 시 안내드립니다.</p>
+          <div class="btns">
+            <a class="btn" target="_blank" rel="noopener" href="https://map.naver.com/p/search/%EC%96%91%EC%9E%AC%EB%8F%99%20%EC%B0%A8%EC%98%A4%EB%9D%BC%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4">네이버 지도에서 보기</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://place.map.kakao.com/search?q=%EC%96%91%EC%9E%AC%EB%8F%99%20%EC%B0%A8%EC%98%A4%EB%9D%BC">카카오맵에서 보기</a>
+          </div>
+        </div>
+        <div class="visit-card">
+          <h3>이용 안내</h3>
+          <p class="note">주차 <strong>불가</strong> · 엘리베이터 이용 · 소수 정원 예약제</p>
+          <p class="note">문의: <a href="mailto:chaaura@naver.com">chaaura@naver.com</a></p>
         </div>
       </div>
     </div>
