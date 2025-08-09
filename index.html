@@ -3,9 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>차오라 스튜디오 · ChaAura Studio</title>
+  <title>차오라 스튜디오 · Cha Aura Studio</title>
   <meta name="description" content="크리스탈 싱잉볼 사운드, 마음챙김, 먹기 명상. 고요가 머무는 곳, 차오라.">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* --- Overrides for Walden/joohankim-like minimal mood --- */
+    :root{ --ink:#111; --muted:#5f5f5f; --line:#eee; --bg:#fff; --accent:#111; --accent-weak:#f4f4f4; }
+    body{ line-height:1.7; letter-spacing:0.003em; }
+    .container{ max-width:960px; padding:0 20px; }
+    .section{ padding:88px 0; border-top:1px solid var(--line); }
+    .header .inner{ padding:16px 0; }
+    h1{ font-size:48px; line-height:1.12; letter-spacing:-0.01em; margin:0; }
+    h2{ font-size:32px; line-height:1.25; letter-spacing:-0.01em; margin:0 0 12px; }
+    p.lead{ font-size:18px; color:var(--muted); margin-top:14px; }
+    /* Buttons: smaller font + subtle color */
+    .btn{ font-size:14px; border-color:var(--ink); }
+    .btn.primary{ background:var(--accent); color:#fff; border-color:var(--accent); }
+    .btn.alt{ background:var(--accent-weak); }
+    /* Hero image: force wide aspect so 4:5 원본도 가로로 안정 표시 */
+    .heroimg{ aspect-ratio:16/9 !important; border-radius:18px; overflow:hidden; border:1px solid var(--line); }
+    .heroimg img{ width:100%; height:100%; object-fit:cover; }
+    /* Carousels: slightly taller on desktop, shorter on mobile */
+    .carousel img{ height:340px; }
+    @media (max-width: 599px){
+      h1{ font-size:34px; }
+      h2{ font-size:24px; }
+      .carousel img{ height:260px; }
+      .btn{ font-size:13px; }
+      .section{ padding:72px 0; }
+    }
+    /* Profile card a bit smaller */
+    .profile{ grid-template-columns:68px 1fr; }
+    .profile img{ width:68px; height:68px; }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -13,7 +43,7 @@
     <div class="container inner">
       <a href="/" class="logo" style="display:flex;align-items:center;gap:10px;text-decoration:none">
         <span style="display:inline-block;width:24px;height:24px;border-radius:50%;background:#111"></span>
-        <strong>Cha Aura</strong>
+        <strong>Chaora Studio</strong>
       </a>
       <nav class="nav">
         <a href="#about">소개</a>
@@ -21,11 +51,11 @@
         <a href="#profile">프로필</a>
         <a href="#contact">오시는 길</a>
       </nav>
-      <a class="btn" href="#classes">지금 예약</a>
+      <a class="btn primary" href="#classes">지금 예약</a>
     </div>
   </header>
 
-  <!-- Hero (no external links here) -->
+  <!-- Hero (no external links) -->
   <section class="hero">
     <div class="container grid two">
       <div>
@@ -33,6 +63,7 @@
         <p class="lead">크리스탈 싱잉볼·마음챙김·먹기 명상. 숨을 고르고, 내면의 질서를 다시 세우는 시간.</p>
       </div>
       <div class="heroimg">
+        <!-- ensure file name is images/hero.jpg (not hero.jpg.jpg) -->
         <img src="images/hero.jpg.jpg" alt="차오라 스튜디오">
       </div>
     </div>
@@ -43,7 +74,7 @@
     <div class="container grid two">
       <div>
         <h2>차오라 스튜디오</h2>
-        <p>도심 속 조용한 공간에서 호흡을 따라 나를 돌보는 시간을 함께합니다. 명상과 나를 돌보는 활동이 자연스럽게 스며들도록 돕는 체험 원데이 클래스와 꾸준하고 반복적인 수련활동을 위한 정규클래스도 운영됩니다. 그 밖에 다양한 커뮤니티 공간 지원, 웰니스 컨텐츠 제작을 돕고 있습니다 </p>
+        <p>도심 속 조용한 공간에서 나를 돌보는 시간을 함께합니다. 일상에 자연스레 스며들도록 직접 체험 중심의 원데이 클래스와 정기 수행을 위한 일정으로 운영됩니다. 또한 다양한 마음챙김 커뮤니티를 위한 공간 개방과 웰니스 콘텐츠 제작·지원을 이어갑니다.</p>
         <small class="hint">운영: 화–토 / 시간 유동 (예약제)</small>
       </div>
       <div class="carousel" data-name="about">
@@ -76,7 +107,7 @@
           <div class="body">
             <strong>플라워 만다라 명상</strong>
             <p class="hint">감각을 여는 창의적 명상과 해체의식.</p>
-            <p><a class="btn" href="https://booking.naver.com/booking/12/bizes/1421328/items/6782032?isProgramBizItem=false&startDateTime=2025-08-09T00%3A00%3A00%2B09%3A00" target="_blank" rel="noopener">네이버 예약</a></p>
+            <p><a class="btn alt" href="https://booking.naver.com/booking/12/bizes/1421328/items/6782032?isProgramBizItem=false&startDateTime=2025-08-09T00%3A00%3A00%2B09%3A00" target="_blank" rel="noopener">네이버 예약</a></p>
           </div>
         </article>
 
@@ -93,7 +124,7 @@
           <div class="body">
             <strong>목요일 저녁 · 크리스탈 싱잉볼 사운드배스</strong>
             <p class="hint">일주일의 피로를 이완시키는 사운드 레스트.</p>
-            <p><a class="btn" href="https://booking.naver.com/booking/12/bizes/1421328/items/6807953?isProgramBizItem=false&startDateTime=2025-07-17T00%253A00%253A00%252B09%253A00" target="_blank" rel="noopener">네이버 예약</a></p>
+            <p><a class="btn alt" href="https://booking.naver.com/booking/12/bizes/1421328/items/6807953?isProgramBizItem=false&startDateTime=2025-07-17T00%253A00%253A00%252B09%253A00" target="_blank" rel="noopener">네이버 예약</a></p>
           </div>
         </article>
 
@@ -110,7 +141,7 @@
           <div class="body">
             <strong>토요 브런치 명상</strong>
             <p class="hint">건포도/초콜릿 명상 + 비건 브런치 나눔.</p>
-            <p><a class="btn" href="https://booking.naver.com/booking/12/bizes/1421328/items/6834301?isProgramBizItem=false&startDateTime=2025-08-09T00%3A00%3A00%2B09%3A00" target="_blank" rel="noopener">네이버 예약</a></p>
+            <p><a class="btn alt" href="https://booking.naver.com/booking/12/bizes/1421328/items/6834301?isProgramBizItem=false&startDateTime=2025-08-09T00%3A00%3A00%2B09%3A00" target="_blank" rel="noopener">네이버 예약</a></p>
           </div>
         </article>
       </div>
@@ -124,12 +155,13 @@
       <div class="profile">
         <img src="images/profile.jpg" alt="프로필 사진" onerror="this.style.background='#eee'">
         <div>
-          <strong>차오라 · ChaAura</strong>
+          <strong>차오라 · Chaora</strong>
           <div class="badges">
             <span class="badge">크리스탈/싱잉볼 힐러</span>
             <span class="badge">한국회복탄력성전문가협회 이사</span>
             <span class="badge">MSC‑T Trained / MSC Teacher in Training</span>
             <span class="badge">13년차 인플루언서 @costrama</span>
+            <span class="badge">차오라 운영</span>
             <span class="badge">필라테스 지도자</span>
           </div>
         </div>
@@ -177,36 +209,28 @@
     </div>
   </section>
 
-  <!-- Contact / Map only -->
+  <!-- Contact (no map) -->
   <section id="contact" class="section">
-    <div class="container grid two">
-      <div>
-        <h2>오시는 길</h2>
-        <p>서울 서초구 양재동 마방로6길 33, 4층 — 차오라 스튜디오</p>
-        <small class="hint">주차 불가 (언남체육센터 공영주차장 도보 3분) · 양재역 도보 8분</small>
-      </div>
-      <div class="map">
-        <iframe title="map" src="https://maps.google.com/maps?q=37.4663,127.034&t=k&z=15&output=embed" loading="lazy"></iframe>
-      </div>
+    <div class="container">
+      <h2>오시는 길</h2>
+      <p>서울 서초구 양재동 마방로6길 33, 4층 — 차오라 스튜디오</p>
+      <small class="hint">주차 <strong>불가</strong> · 양재역 도보 8분</small>
     </div>
   </section>
 
-  <!-- Latest: YouTube & Instagram (auto via embeds) -->
+  <!-- Latest: YouTube & Instagram (embeds/placeholder) -->
   <section class="section">
     <div class="container">
       <h2>최신 컨텐츠</h2>
-      <div class="latest" style="margin-top:12px">
+      <div class="latest" style="margin-top:12px; display:grid; gap:18px;">
         <div class="feedbox">
           <div class="head"><strong>YouTube (@Cha_Aura)</strong><span class="hint">자동 최신</span></div>
-<iframe
-  title="YouTube Shorts"
-  src="https://www.youtube.com/embed/videoseries?list=YOUR_SHORTS_PLAYLIST_ID&rel=0&modestbranding=1"
-  allowfullscreen
-></iframe>
+          <!-- 쇼츠 전용 플레이리스트 ID를 넣어주세요 -->
+          <iframe title="YouTube Shorts" src="https://www.youtube.com/embed/videoseries?list=YOUR_SHORTS_PLAYLIST_ID&rel=0&modestbranding=1" allowfullscreen></iframe>
         </div>
         <div class="feedbox">
           <div class="head"><strong>Instagram (@chaaura__)</strong><span class="hint">자동 최신</span></div>
-          <!-- LightWidget/SnapWidget 등의 임베드 코드를 아래에 붙여넣으면 최신 피드가 자동 표시됩니다. -->
+          <!-- LightWidget/SnapWidget 등에서 받은 임베드 코드를 아래에 붙여넣으세요 -->
           <div style="padding:14px" class="hint">여기에 Instagram 위젯 코드를 붙여넣어 주세요.</div>
         </div>
       </div>
