@@ -2,157 +2,357 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cha Aura Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cha Aura Studio · 차오라 스튜디오</title>
+  <meta name="description" content="크리스탈 싱잉볼·마음챙김·먹기 명상. 고요가 머무는 곳, 차오라." />
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      color: #222;
-      background-color: #fff;
-      line-height: 1.6;
+    :root{
+      --ink:#111; --muted:#666; --line:#eee; --bg:#fff;
+      --accent:#111; --soft:#f6f6f6;
     }
-    header {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);line-height:1.7;letter-spacing:.003em;}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:960px;margin:0 auto;padding:0 20px}
+    .section{padding:88px 0;border-top:1px solid var(--line)}
+    h1{font-size:48px;line-height:1.12;letter-spacing:-.01em;margin:0}
+    h2{font-size:28px;line-height:1.25;letter-spacing:-.01em;margin:0 0 10px}
+    p.lead{font-size:18px;color:var(--muted);margin-top:12px}
+
+    /* Header */
+    .header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--line);z-index:10}
+    .header .inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .nav{display:none;gap:18px}
+    @media (min-width:768px){.nav{display:flex}}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);padding:8px 12px;border-radius:12px;font-size:13px}
+    .btn--primary{background:#111;color:#fff;border-color:#111;padding:10px 14px}
+    .btn--book{font-size:12px;padding:8px 12px;border-radius:999px;background:var(--soft);border-color:#d8d8d8}
+    .btn--book:hover{background:#efefef}
+
+    /* HERO: 9:16 with caption */
+    .hero{padding:0;border-top:none}
+    .hero-figure{position:relative;aspect-ratio:9/16;max-height:90vh;margin:0;border-bottom:1px solid var(--line);overflow:hidden}
+    .hero-figure img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-figure figcaption{
+      position:absolute;left:0;right:0;bottom:0;
+      padding:18px 20px;font-size:28px;letter-spacing:.02em;color:#fff;
+      background:linear-gradient(180deg,rgba(0,0,0,0) 0%, rgba(0,0,0,.45) 80%);
     }
-    header img {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+
+    /* Grids */
+    .grid{display:grid;gap:32px}
+    @media (min-width:900px){.grid.two{grid-template-columns:1.05fr .95fr}}
+
+    /* Carousel */
+    .carousel{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fafafa}
+    .carousel-track{display:flex;transition:transform .4s ease}
+    .carousel img{width:100%;height:300px;object-fit:cover;display:block}
+    .carousel .nav{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;padding:0 4px;pointer-events:none}
+    .carousel .nav button{pointer-events:auto;border:none;background:rgba(0,0,0,.5);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer}
+    .carousel .dots{position:absolute;bottom:8px;left:0;right:0;display:flex;gap:6px;justify-content:center}
+    .carousel .dot{width:8px;height:8px;border-radius:50%;background:#d0d0d0}
+    .carousel .dot.active{background:#111}
+
+    /* Cards */
+    .list{display:grid;gap:18px}
+    @media(min-width:900px){.list{grid-template-columns:repeat(3,1fr)}}
+    .card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
+    .card .body{padding:16px}
+    .title{
+      font-size:20px;line-height:1.3;margin:0 0 6px;
+      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden
     }
-    header .caption {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.4);
-      color: #fff;
-      padding: 8px 16px;
-      font-size: 1.5rem;
-      border-radius: 4px;
-    }
-    main {
-      max-width: 960px;
-      margin: auto;
-      padding: 88px 20px;
-    }
-    section {
-      margin-bottom: 88px;
-    }
-    h2 {
-      font-size: 1.6rem;
-      font-weight: 500;
-      margin-bottom: 1rem;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    .card {
-      border-top: 1px solid #ddd;
-      padding-top: 12px;
-    }
-    .card h3 {
-      font-size: 1.1rem;
-      font-weight: 500;
-      line-height: 1.4;
-      min-height: 2.8em;
-      margin-bottom: 0.5em;
-    }
-    .card p {
-      font-size: 0.9rem;
-      min-height: 3.2em;
-    }
-    .btn {
-      display: inline-block;
-      padding: 6px 12px;
-      font-size: 0.8rem;
-      background: #333;
-      color: #fff;
+    .desc{color:var(--muted);font-size:15px;line-height:1.55;min-height:3.1em}
+
+    /* Profile */
+    .profile{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:12px;background:#fff}
+    .profile img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+    .badge{border:1px solid var(--ink);border-radius:999px;padding:5px 9px;font-size:11px}
+    .columns{display:grid;gap:18px}
+    @media(min-width:900px){.columns{grid-template-columns:repeat(3,1fr)}}
+    ul.clean{margin:8px 0 0;padding-left:20px}
+    .clean li{font-size:14px;line-height:1.7;margin:2px 0}
+
+    /* Latest feeds */
+    .latest{display:grid;gap:18px}
+    @media(min-width:900px){.latest{grid-template-columns:1fr 1fr}}
+    .feedbox{border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
+    .feedbox .head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line)}
+    .feedbox iframe{width:100%;height:420px;border:0}
+
+    /* Shorts slim */
+    .shorts-wrap{
+      aspect-ratio: 9/16;
+      max-width: 420px;
+      margin: 12px auto 18px;
+      border: 1px solid var(--line);
       border-radius: 16px;
-      text-decoration: none;
+      overflow: hidden;
+      background:#000;
     }
-    .profile img {
-      max-width: 160px;
-      border-radius: 50%;
-      display: block;
-      margin-bottom: 1rem;
-    }
-    .profile ul {
-      font-size: 0.85rem;
-      padding-left: 1.2rem;
-    }
-    footer {
-      background: #111;
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    footer a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 8px;
-    }
-    iframe {
-      width: 100%;
-      height: 480px;
-      border: none;
-    }
-    @media (max-width: 600px) {
-      header .caption { font-size: 1.1rem; padding: 6px 12px; }
-      iframe { height: 320px; }
+    .shorts-wrap iframe{ width:100%; height:100%; border:0; display:block; }
+
+    /* Mobile */
+    @media (max-width:600px){
+      h1{font-size:34px}
+      h2{font-size:22px}
+      .section{padding:70px 0}
+      .carousel img{height:220px}
+      .btn{font-size:12px}
+      .btn--book{font-size:11px}
+      .hero-figure figcaption{font-size:22px;padding:16px}
+      .shorts-wrap{ max-width:340px; }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <img src="images/hero.jpg" alt="Cha Aura Main" />
-    <div class="caption">차오라</div>
+  <!-- Header -->
+  <header class="header">
+    <div class="container inner">
+      <a href="/" style="display:flex;align-items:center;gap:10px">
+        <span style="display:inline-block;width:24px;height:24px;border-radius:50%;background:#111"></span>
+        <strong>Cha Aura Studio</strong>
+      </a>
+      <nav class="nav">
+        <a href="#about">소개</a>
+        <a href="#classes">클래스&예약</a>
+        <a href="#profile">프로필</a>
+        <a href="#contact">오시는 길</a>
+      </nav>
+      <a class="btn btn--primary" href="#classes">지금 예약</a>
+    </div>
   </header>
-  <main>
-    <section>
-      <h2>스튜디오 소개</h2>
-      <p>도심 속 조용한 공간에서 나를 돌보는 시간을 함께합니다. 일상에 자연스럽게 스며들 수 있도록 체험을 통한 경험을 쌓을 수 있도록 돕는 원데이 클래스와, 정규적인 수행을 위한 일정으로 나누어집니다. 또한 다양한 마음챙김 커뮤니티를 위한 공간 오픈, 웰니스 컨텐츠를 위한 지원도 이루어집니다.</p>
-    </section>
-    <section>
+
+  <!-- HERO -->
+  <section class="hero">
+    <figure class="hero-figure">
+      <img src="images/hero.jpg" alt="Cha Aura Studio">
+      <figcaption>차오라</figcaption>
+    </figure>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container grid two">
+      <div>
+        <h2>차오라 스튜디오</h2>
+        <p>
+          도심 속 조용한 공간에서 <strong>나를 돌보는 시간</strong>을 함께합니다.
+          일상에 자연스레 스며들도록 <strong>직접 체험 중심의 원데이 클래스</strong>와
+          <strong>정기 수행을 위한 일정</strong>으로 운영됩니다.
+          또한 다양한 <strong>마음챙김 커뮤니티를 위한 공간 개방</strong>과
+          <strong>웰니스 콘텐츠 제작·지원</strong>을 이어갑니다.
+        </p>
+      </div>
+
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="images/about-1.jpg" alt="차오라 공간 1" onerror="this.style.display='none'">
+          <img src="images/about-2.jpg" alt="차오라 공간 2" onerror="this.style.display='none'">
+          <img src="images/about-3.jpg" alt="차오라 공간 3" onerror="this.style.display='none'">
+        </div>
+        <div class="nav"><button data-prev>‹</button><button data-next>›</button></div>
+        <div class="dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLASSES -->
+  <section id="classes" class="section">
+    <div class="container">
       <h2>클래스 & 예약</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>플라워 만다라 명상</h3>
-          <p>꽃과 함께하는 해체의식과 명상, 크리스탈 싱잉볼 사운드로 마무리.</p>
-          <a class="btn" href="https://booking.naver.com/booking/12/bizes/1421328/items/6782032?isProgramBizItem=false&startDateTime=2025-08-09T00%3A00%3A00%2B09%3A00" target="_blank">네이버 예약</a>
+
+      <div class="list" style="margin-top:18px">
+        <!-- Flower Mandala -->
+        <article class="card">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="images/class-flower-1.jpg" alt="플라워 만다라 1" onerror="this.style.display='none'">
+              <img src="images/class-flower-2.jpg" alt="플라워 만다라 2" onerror="this.style.display='none'">
+              <img src="images/class-flower-3.jpg" alt="플라워 만다라 3" onerror="this.style.display='none'">
+            </div>
+            <div class="nav"><button data-prev>‹</button><button data-next>›</button></div>
+            <div class="dots"></div>
+          </div>
+          <div class="body">
+            <h3 class="title">플라워 만다라 명상</h3>
+            <p class="desc">감각을 여는 창의적 명상과 해체의식.</p>
+            <p><a class="btn btn--book" href="https://booking.naver.com/booking/12/bizes/1421328/items/6782032?isProgramBizItem=false&startDateTime=2025-08-09T00%3A00%3A00%2B09%3A00" target="_blank" rel="noopener">네이버 예약</a></p>
+          </div>
+        </article>
+
+        <!-- Sound bath -->
+        <article class="card">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="images/class-soundbath-1.jpg" alt="사운드배스 1" onerror="this.style.display='none'">
+              <img src="images/class-soundbath-2.jpg" alt="사운드배스 2" onerror="this.style.display='none'">
+              <img src="images/class-soundbath-3.jpg" alt="사운드배스 3" onerror="this.style.display='none'">
+            </div>
+            <div class="nav"><button data-prev>‹</button><button data-next>›</button></div>
+            <div class="dots"></div>
+          </div>
+          <div class="body">
+            <h3 class="title">목요일 저녁 사운드배스</h3>
+            <p class="desc">일주일의 피로를 이완시키는 사운드 레스트.</p>
+            <p><a class="btn btn--book" href="https://booking.naver.com/booking/12/bizes/1421328/items/6807953?isProgramBizItem=false&startDateTime=2025-07-17T00%253A00%253A00%252B09%253A00" target="_blank" rel="noopener">네이버 예약</a></p>
+          </div>
+        </article>
+
+        <!-- Brunch -->
+        <article class="card">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="images/class-brunch-1.jpg" alt="브런치 1" onerror="this.style.display='none'">
+              <img src="images/class-brunch-2.jpg" alt="브런치 2" onerror="this.style.display='none'">
+              <img src="images/class-brunch-3.jpg" alt="브런치 3" onerror="this.style.display='none'">
+            </div>
+            <div class="nav"><button data-prev>‹</button><button data-next>›</button></div>
+            <div class="dots"></div>
+          </div>
+          <div class="body">
+            <h3 class="title">토요 브런치 명상</h3>
+            <p class="desc">건포도/초콜릿 명상 + 비건 브런치 나눔.</p>
+            <p><a class="btn btn--book" href="https://booking.naver.com/booking/12/bizes/1421328/items/6834301?isProgramBizItem=false&startDateTime=2025-08-09T00%3A00%3A00%2B09%3A00" target="_blank" rel="noopener">네이버 예약</a></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile" class="section">
+    <div class="container">
+      <h2>프로필</h2>
+
+      <div class="profile">
+        <img src="images/profile.jpg" alt="프로필 사진" onerror="this.style.background='#eee'">
+        <div>
+          <strong>Cha Aura · 차오라</strong>
+          <div class="badges">
+            <span class="badge">크리스탈/싱잉볼 힐러</span>
+            <span class="badge">한국회복탄력성전문가협회 이사</span>
+            <span class="badge">MSC-T Trained / MSC Teacher in Training</span>
+            <span class="badge">13년차 인플루언서 @costrama</span>
+            <span class="badge">차오라 운영</span>
+            <span class="badge">필라테스 지도자</span>
+          </div>
         </div>
       </div>
-    </section>
-    <section class="profile">
-      <h2>프로필</h2>
-      <img src="images/profile.jpg" alt="Cha Aura Profile" />
-      <ul>
-        <li>크리스탈/싱잉볼 힐러</li>
-        <li>한국회복탄력성전문가협회 이사</li>
-        <li>국제공인 MSC-T Trained Teacher / MSC Teacher in Training</li>
-        <li>13년차 라이프스타일 인플루언서 (@costrama)</li>
-        <li>공간 차오라 운영</li>
-        <li>필라테스 지도자</li>
-      </ul>
-    </section>
-    <section>
-      <h2>최신 콘텐츠</h2>
-      <iframe src="https://www.youtube.com/embed/d_LaWndndi4?autoplay=1&mute=1&loop=1&playlist=d_LaWndndi4&modestbranding=1&rel=0&controls=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </section>
-  </main>
-  <footer>
-    <p>© Cha Aura | Email: <a href="mailto:chaaura@naver.com">chaaura@naver.com</a></p>
-    <p>
-      <a href="https://www.instagram.com/chaaura__" target="_blank">Instagram</a> |
-      <a href="https://www.youtube.com/@Cha_Aura/shorts" target="_blank">YouTube</a>
-    </p>
+
+      <div class="columns" style="margin-top:18px">
+        <div>
+          <strong>◆ 웰니스 브랜딩 캠페인 컨설팅</strong>
+          <ul class="clean">
+            <li>LCDC, 호텔 나루 서울 엠갤러리, Jun by Jun K, 더말로지카</li>
+          </ul>
+        </div>
+        <div>
+          <strong>◆ 클래스 진행</strong>
+          <ul class="clean">
+            <li>現 차오라 스튜디오, 베러미클럽 클래스 진행 중</li>
+            <li>前 맺다명상연구소, 마이요가목동 정규 클래스</li>
+            <li>프론투라인, 더채플, 온숲 등 브랜드 클래스</li>
+          </ul>
+        </div>
+        <div>
+          <strong>◆ 강의 및 강연</strong>
+          <ul class="clean">
+            <li>국회학술세미나 · 이화여자대학교 글로벌평생교육원(’24,’25)</li>
+            <li>숙명여자대학교 평생교육원(’23,’24) · 청라중학교 특강</li>
+            <li>화도진중학교 자기연민 · 김포호수중 학부모 마음챙김 연수</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <div class="body">
+          <strong>외부 출강 · 이벤트</strong>
+          <div class="carousel" style="margin-top:10px">
+            <div class="carousel-track">
+              <img src="images/profile-1.jpg" alt="이벤트 1" onerror="this.style.display='none'">
+              <img src="images/profile-2.jpg" alt="이벤트 2" onerror="this.style.display='none'">
+              <img src="images/profile-3.jpg" alt="이벤트 3" onerror="this.style.display='none'">
+            </div>
+            <div class="nav"><button data-prev>‹</button><button data-next>›</button></div>
+            <div class="dots"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (no map) -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>오시는 길</h2>
+      <p>서울 서초구 양재동 마방로6길 33, 4층 — Cha Aura Studio</p>
+      <small style="color:#888">주차 <strong>불가</strong> · 양재역 도보 8분</small>
+    </div>
+  </section>
+
+  <!-- LATEST CONTENT: Shorts slim + auto loop -->
+  <section class="section">
+    <div class="container">
+      <h2>최신 컨텐츠</h2>
+      <div class="latest" style="margin-top:12px">
+        <div class="feedbox">
+          <div class="head"><strong>YouTube Shorts</strong><span style="color:#888">자동 최신</span></div>
+          <div class="shorts-wrap">
+            <iframe
+              title="Cha Aura Shorts"
+              src="https://www.youtube.com/embed/videoseries?list=PL1-okbgO2SbzXacs05gf3wj5lMEsEp3xZ&playlist=PL1-okbgO2SbzXacs05gf3wj5lMEsEp3xZ&rel=0&modestbranding=1&controls=0&fs=0&iv_load_policy=3&playsinline=1&loop=1&autoplay=1&mute=1"
+              allow="autoplay; encrypted-media"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="feedbox">
+          <div class="head"><strong>Instagram (@chaaura__)</strong><span style="color:#888">자동 최신</span></div>
+          <!-- LightWidget/SnapWidget 위젯 코드 붙여넣기 -->
+          <div style="padding:14px;color:#888">여기에 Instagram 위젯 코드를 붙여넣어 주세요.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="section" style="padding:28px 0;border-top:1px solid var(--line)">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:#111"></span>
+        <span>© 2025 Cha Aura Studio</span>
+      </div>
+      <div style="color:#777">
+        Instagram <a href="https://www.instagram.com/chaaura__" target="_blank" rel="noopener">@chaaura__</a> ·
+        YouTube <a href="https://www.youtube.com/@Cha_Aura" target="_blank" rel="noopener">@Cha_Aura</a> ·
+        E-mail <a href="mailto:chaaura@naver.com">chaaura@naver.com</a>
+      </div>
+    </div>
   </footer>
+
+  <!-- Minimal carousel JS -->
+  <script>
+    function setupCarousel(el){
+      const track=el.querySelector('.carousel-track'); if(!track) return;
+      let slides=[...track.children].filter(img=>img.style.display!=='none');
+      if(slides.length===0){ el.style.display='none'; return; }
+      let idx=0;
+      const prev=el.querySelector('[data-prev]'), next=el.querySelector('[data-next]'), dots=el.querySelector('.dots')||document.createElement('div');
+      if(!dots.classList.contains('dots')){ dots.className='dots'; el.appendChild(dots); }
+      function paintDots(){
+        dots.innerHTML=''; slides.forEach((_,i)=>{const d=document.createElement('div'); d.className='dot'+(i===idx?' active':''); d.onclick=()=>{idx=i;update()}; dots.appendChild(d);});
+      }
+      function update(){ track.style.transform=`translateX(${-idx*el.clientWidth}px)`; [...dots.children].forEach((d,i)=>d.classList.toggle('active',i===idx)); }
+      prev&&prev.addEventListener('click',()=>{idx=(idx-1+slides.length)%slides.length;update()});
+      next&&next.addEventListener('click',()=>{idx=(idx+1)%slides.length;update()});
+      window.addEventListener('resize',update);
+      paintDots(); update();
+    }
+    window.addEventListener('DOMContentLoaded',()=>{ document.querySelectorAll('.carousel').forEach(setupCarousel); });
+  </script>
 </body>
 </html>
