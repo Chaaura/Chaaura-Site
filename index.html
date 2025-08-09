@@ -30,47 +30,56 @@
     .btn--book{font-size:12px;padding:8px 12px;border-radius:999px;background:var(--soft);border-color:#d8d8d8}
     .btn--book:hover{background:#efefef}
 
-/* HERO: full-bleed 16:9 */
-.hero-figure{
-  position: relative;
-  width: 100vw;                     /* 뷰포트 너비만큼 */
-  margin-left: calc(50% - 50vw);    /* 부모 패딩/여백 무시하고 좌우 꽉 채우기 */
-  aspect-ratio: 16/9;               /* 16:9로 고정 */
-  max-height: 90vh;
-  border-bottom: 1px solid var(--line);
-  overflow: hidden;
-}
-.hero-figure img{width:100%;height:100%;object-fit:cover;display:block}
-
+    /* HERO: full-bleed 16:9 with caption */
+    .hero{padding:0;border-top:none}
+    .hero-figure{
+      position:relative;
+      width:100vw;
+      margin-left:calc(50% - 50vw);
+      aspect-ratio:16/9;
+      max-height:90vh;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+      background:#000;
+    }
+    .hero-figure img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-figure figcaption{
+      position:absolute;left:0;right:0;bottom:0;
+      padding:18px 20px;font-size:28px;letter-spacing:.02em;color:#fff;
+      background:linear-gradient(180deg,rgba(0,0,0,0) 0%, rgba(0,0,0,.45) 80%);
+    }
 
     /* Grids */
     .grid{display:grid;gap:32px}
     @media (min-width:900px){.grid.two{grid-template-columns:1.05fr .95fr}}
 
     /* Carousel */
-/* Carousel */
-.carousel{
-  position:relative;
-  border:1px solid var(--line);
-  border-radius:18px;
-  overflow:hidden;
-  background:#000;                 /* 트랜지션 중 바닥색 보이지 않게 */
-}
-.carousel-track{
-  display:flex;
-  transition:transform .4s ease;
-  will-change: transform;
-}
-.carousel-track > img{
-  flex:0 0 100%;                   /* 슬라이드가 항상 1면(=100%) 차지 */
-  width:100%;
-  height:clamp(220px, 34vw, 360px);/* 반응형 높이 */
-  object-fit:cover;
-  display:block;
-}
-.carousel .nav{ /* 기존 그대로 사용 가능 */}
-.carousel .dots{/* 기존 그대로 사용 가능 */}
-
+    .carousel{
+      position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#000;
+    }
+    .carousel-track{display:flex;transition:transform .4s ease;will-change:transform}
+    .carousel-track > img{
+      flex:0 0 100%;width:100%;
+      height:clamp(220px, 34vw, 360px);
+      object-fit:cover;display:block;
+    }
+    .carousel .nav{
+      position:absolute;inset:0;display:flex;
+      justify-content:space-between;align-items:center;
+      padding:0 6px;pointer-events:none;
+    }
+    .carousel .nav button{
+      pointer-events:auto;border:0;cursor:pointer;
+      width:40px;height:40px;border-radius:50%;
+      background:rgba(0,0,0,.55);color:#fff;font-size:20px;
+      display:flex;align-items:center;justify-content:center;
+      transition:background .2s ease, transform .05s ease;
+    }
+    .carousel .nav button:hover{background:rgba(0,0,0,.7)}
+    .carousel .nav button:active{transform:scale(.96)}
+    .carousel .dots{position:absolute;bottom:10px;left:0;right:0;display:flex;gap:6px;justify-content:center}
+    .carousel .dot{width:8px;height:8px;border-radius:50%;background:#d0d0d0}
+    .carousel .dot.active{background:#fff}
 
     /* Cards */
     .list{display:grid;gap:18px}
@@ -88,19 +97,25 @@
     .profile img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
     .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
     .badge{border:1px solid var(--ink);border-radius:999px;padding:5px 9px;font-size:11px}
+
+    /* Career list smaller */
+    .career-list{font-size:0.9rem;line-height:1.5}
+    .career-list strong{font-size:1rem}
+    .career-list ul.clean li{font-size:0.85rem}
+
     .columns{display:grid;gap:18px}
     @media(min-width:900px){.columns{grid-template-columns:repeat(3,1fr)}}
     ul.clean{margin:8px 0 0;padding-left:20px}
-    .clean li{font-size:14px;line-height:1.7;margin:2px 0}
+    .clean li{margin:2px 0}
 
     /* Latest feeds */
     .latest{display:grid;gap:18px}
     @media(min-width:900px){.latest{grid-template-columns:1fr 1fr}}
     .feedbox{border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
     .feedbox .head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line)}
-    .feedbox iframe{width:100%;height:420px;border:0}
+    .feedbox iframe{width:100%;border:0}
 
-    /* Shorts slim */
+    /* Shorts slim player */
     .shorts-wrap{
       aspect-ratio: 9/16;
       max-width: 420px;
@@ -117,12 +132,15 @@
       h1{font-size:34px}
       h2{font-size:22px}
       .section{padding:70px 0}
-      .carousel img{height:220px}
       .btn{font-size:12px}
       .btn--book{font-size:11px}
       .hero-figure figcaption{font-size:22px;padding:16px}
       .shorts-wrap{ max-width:340px; }
     }
+
+    /* LightWidget default size */
+    .lightwidget-widget{width:100%;border:0;overflow:hidden;height:480px}
+    @media (max-width:600px){.lightwidget-widget{height:360px}}
   </style>
 </head>
 
@@ -255,13 +273,12 @@
             <span class="badge">한국회복탄력성전문가협회 이사</span>
             <span class="badge">MSC-T Trained / MSC Teacher in Training</span>
             <span class="badge">13년차 인플루언서 @costrama</span>
-            <span class="badge">차오라 운영</span>
             <span class="badge">필라테스 지도자</span>
           </div>
         </div>
       </div>
 
-      <div class="columns" style="margin-top:18px">
+      <div class="columns career-list" style="margin-top:18px">
         <div>
           <strong>◆ 웰니스 브랜딩 캠페인 컨설팅</strong>
           <ul class="clean">
@@ -312,7 +329,7 @@
     </div>
   </section>
 
-  <!-- LATEST CONTENT: Shorts slim + auto loop -->
+  <!-- LATEST CONTENT: Shorts + Instagram -->
   <section class="section">
     <div class="container">
       <h2>최신 컨텐츠</h2>
@@ -330,8 +347,10 @@
         </div>
         <div class="feedbox">
           <div class="head"><strong>Instagram (@chaaura__)</strong><span style="color:#888">자동 최신</span></div>
-          <!-- LightWidget/SnapWidget 위젯 코드 붙여넣기 -->
-          <div style="padding:14px;color:#888">여기에 Instagram 위젯 코드를 붙여넣어 주세요.</div>
+          <!-- LightWidget WIDGET -->
+          <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+          <iframe src="//lightwidget.com/widgets/c60cb82c9eed54bbae09861f7f35f460.html"
+            scrolling="no" allowtransparency="true" class="lightwidget-widget"></iframe>
         </div>
       </div>
     </div>
@@ -359,16 +378,16 @@
       let slides=[...track.children].filter(img=>img.style.display!=='none');
       if(slides.length===0){ el.style.display='none'; return; }
       let idx=0;
-      const prev=el.querySelector('[data-prev]'), next=el.querySelector('[data-next]'), dots=el.querySelector('.dots')||document.createElement('div');
+      const prev=el.querySelector('[data-prev]'),
+            next=el.querySelector('[data-next]'),
+            dots=el.querySelector('.dots')||document.createElement('div');
       if(!dots.classList.contains('dots')){ dots.className='dots'; el.appendChild(dots); }
-      function paintDots(){
-        dots.innerHTML=''; slides.forEach((_,i)=>{const d=document.createElement('div'); d.className='dot'+(i===idx?' active':''); d.onclick=()=>{idx=i;update()}; dots.appendChild(d);});
-      }
+      function paintDots(){ dots.innerHTML=''; slides.forEach((_,i)=>{const d=document.createElement('div'); d.className='dot'+(i===idx?' active':''); d.onclick=()=>{idx=i;update()}; dots.appendChild(d);}); }
       function update(){ track.style.transform=`translateX(${-idx*el.clientWidth}px)`; [...dots.children].forEach((d,i)=>d.classList.toggle('active',i===idx)); }
       prev&&prev.addEventListener('click',()=>{idx=(idx-1+slides.length)%slides.length;update()});
       next&&next.addEventListener('click',()=>{idx=(idx+1)%slides.length;update()});
       window.addEventListener('resize',update);
-      window.addEventListener('load', update);   // 이미지가 늦게 로드돼도 위치 보정
+      window.addEventListener('load',update);
       paintDots(); update();
     }
     window.addEventListener('DOMContentLoaded',()=>{ document.querySelectorAll('.carousel').forEach(setupCarousel); });
